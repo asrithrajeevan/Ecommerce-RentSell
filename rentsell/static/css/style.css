@@ -511,6 +511,10 @@ form a{
     left: 0;
     top: 0;
 }
+.current{
+    color: aqua;
+    font-weight: 700;
+}
 
 /* Media query for menu */
 @media only screen and (max-width: 800px){

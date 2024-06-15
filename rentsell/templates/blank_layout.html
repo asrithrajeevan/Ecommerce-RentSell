@@ -22,12 +22,11 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="{% url 'index' %}">Home</a></li>
-                        <li><a href="{% url 'products' %}">Products</a></li>
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="{% url 'user_account' %}">Account</a></li>
-                    </ul>
+                        <li class="{% if request.path == '/' %}current{% endif %}"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="{% if request.path == '/products/' %}current{% endif %}"><a href="{% url 'products' %}">Products</a></li>
+                        <li class="{% if request.path == '/home/about_us/' %}current{% endif %}"><a href="{% url 'about' %}">About</a></li>
+                        <li class="{% if request.path == '/customer/user_account/' %}current{% endif %}"><a href="{% url 'user_account' %}">Account</a></li>
+                     </ul>
                 </nav>
                 <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
                 <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">

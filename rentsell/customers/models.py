@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 class Customer(models.Model):
     LIVE = 1
     DELETE = 0
