@@ -396,6 +396,21 @@ th:last-child{
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+
+#Message-container-login, #Message-container-register{
+    width: 300px;
+    height:fit-content;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    overflow: hidden; 
+}
+
+#Message-container-login li, #Message-container-register li{
+    color: red;
+}
+
 .form-container span{
     font-weight: bold;
     padding: 0 10px;
@@ -433,7 +448,13 @@ form .btn:focus{
 #LoginForm{
     left: -300px;
 }
+#messageLogin{
+    left: -300px;
+}
 #RegForm{
+    left: 0;
+}
+#messageRegister{
     left: 0;
 }
 form a{
