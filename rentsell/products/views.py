@@ -3,7 +3,13 @@ from django.core.paginator import Paginator # To display product like page ways
 from . models import Products
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    featured_product = Products.objects.order_by('priority')[:4]
+    latest_product = Products.objects.order_by('-id')[:8]
+    context = {
+        'featured_product' : featured_product,
+        'latest_product' : latest_product
+    }
+    return render(request, 'index.html', context)
 
 def list_products(request):
     page = 1 
