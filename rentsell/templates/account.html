@@ -17,7 +17,7 @@
 
 <body>
     <!-- Account Page -->
-    <div class="account-page" style="padding: 0; height: 100%;">
+    <div class="account-page" style="padding-bottom: 20px;">
         <div class="container">
             <div class="row">
                 <div class="col-2">
@@ -31,31 +31,38 @@
                             <hr id="Indicator">
                         </div>
 
-                        <form id="LoginForm">
-                            {% if login_message %}
+                        <form action="{% url 'user_account' %}" method="post" id="LoginForm">
+                            {% csrf_token %}
+                            {% if messages %}
                             <div class="message-container" style="text-align: start;">
-                                {% for message in login_message%}
-                                <li style="color: red; font-size: 10px;">{{message}}</li>
+                                {% for message in messages%}
+                                <li class="{{message.tags}}" style="font-size: 10px;">{{message}}</li>
                                 {% endfor %}
                             </div>
                             {% endif %}
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
+                            <input type="hidden" name="form_id" value="login">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password" id="password">
                             <button type="submit" class="btn">Login</button>
                             <a href="">Forget Password</a>
                         </form>
 
-                        <form id="RegForm">
-                            {% if register_message %}
+                        <form action="{% url 'user_account' %}" method="post" id="RegForm">
+                            {% csrf_token %}
+                            {% if messages %}
                             <div class="message-container" style="text-align: start;">
-                                {% for message in register_message%}
-                                <li style="color: red; font-size: 10px;">{{message}}</li>
+                                {% for message in messages%}
+                                <li class="{{message.tags}}" style="font-size: 10px;">{{message}}</li>
                                 {% endfor %}
                             </div>
                             {% endif %}
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                            <input type="hidden" name="form_id" value="register">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="email" name="email" placeholder="Email" id="email">
+                            <input type="number" name="number" placeholder="Phone number" id="number">
+                            <input type="text" name="address" placeholder="Address" id="address">
+                            <input type="password" name="password" placeholder="Password" id="password">
+                            <input type="password" name="cpassword" placeholder="Confirm Password" id="cpassword">
                             <button type="submit" class="btn">Register</button>
                         </form>
                     </div>
@@ -95,20 +102,16 @@
             LoginForm.style.transform = "translatex(300px)";
             Indicator.style.transform = "translate(0px)";
         }
-
-        // Function to set the height of the .account-page
-        function setAccountPageHeight() {
-            var windowHeight = window.innerHeight;
-            var accountPage = document.querySelector('.account-page');
-            accountPage.style.height = windowHeight + 'px';
-        }
-
-        // Set the initial height on page load
-        setAccountPageHeight();
-
-        // Adjust the height on window resize
-        window.addEventListener('resize', setAccountPageHeight);
     </script>
+    {% if register %}
+        <script>
+            register()
+        </script>
+        {% else %}
+        <script>
+            login()
+        </script>
+    {% endif %}
 
 </body>
 
