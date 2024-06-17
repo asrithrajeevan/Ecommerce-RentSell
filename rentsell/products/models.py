@@ -13,6 +13,7 @@ class Products(models.Model):
     delete_status = models.IntegerField(choices = DELETE_CHOICES, default=LIVE) # for trash functionality
     created_at = models.DateTimeField(auto_now_add=True) # auto matically add created date of a product when a product adding
     updated_at = models.DateTimeField(auto_now=True) # when a change came in this product modal, at that time will store this updated_at field
+    category = models.CharField(max_length=200, null=True)
 
     def __str__(self) -> str:
         return self.title

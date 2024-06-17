@@ -93,6 +93,7 @@ p{
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
+    padding-top: 15px;
 }
 .col-4{
     flex-basis: 25%;
@@ -397,17 +398,11 @@ th:last-child{
     overflow: hidden;
 }
 
-#Message-container-login, #Message-container-register{
-    width: 300px;
-    height:fit-content;
-    position: relative;
-    text-align: center;
-    padding: 20px 0;
-    margin: auto;
-    overflow: hidden; 
+.message-container{
+    padding-bottom:20px 
 }
 
-#Message-container-login li, #Message-container-register li{
+.message-container li{
     color: red;
 }
 
@@ -426,7 +421,7 @@ th:last-child{
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
-    top: 130px;
+    top: 90px;
     transition: transform 1s;
 }
 form input{

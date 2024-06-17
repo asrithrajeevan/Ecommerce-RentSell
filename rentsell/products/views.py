@@ -32,9 +32,13 @@ def list_products(request):
 
 def detail_product(request,pk):
     product = Products.objects.get(pk=pk)
+    related_product = Products.objects.filter(category=product.category) # finding the related category according to the pk
     # for single_product in product:
     # print('product-->',product.price)
+    # for item in related_product:
+    #     print('---------->',item.title)
     context = {
-        'product' : product
+        'product' : product,
+        'related_product' : related_product
     }
     return render(request, 'product_details.html', context)
