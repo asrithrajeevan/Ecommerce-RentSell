@@ -93,6 +93,7 @@ p{
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
+    padding-top: 15px;
 }
 .col-4{
     flex-basis: 25%;
@@ -396,6 +397,15 @@ th:last-child{
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+
+.message-container{
+    padding-bottom:20px 
+}
+
+.message-container li{
+    color: red;
+}
+
 .form-container span{
     font-weight: bold;
     padding: 0 10px;
@@ -411,7 +421,7 @@ th:last-child{
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
-    top: 130px;
+    top: 90px;
     transition: transform 1s;
 }
 form input{
@@ -433,7 +443,13 @@ form .btn:focus{
 #LoginForm{
     left: -300px;
 }
+#messageLogin{
+    left: -300px;
+}
 #RegForm{
+    left: 0;
+}
+#messageRegister{
     left: 0;
 }
 form a{

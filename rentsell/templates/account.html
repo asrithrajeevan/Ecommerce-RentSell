@@ -30,7 +30,15 @@
                             <span onclick="register()">Register</span>
                             <hr id="Indicator">
                         </div>
+
                         <form id="LoginForm">
+                            {% if login_message %}
+                            <div class="message-container" style="text-align: start;">
+                                {% for message in login_message%}
+                                <li style="color: red; font-size: 10px;">{{message}}</li>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                             <input type="text" placeholder="Username">
                             <input type="password" placeholder="Password">
                             <button type="submit" class="btn">Login</button>
@@ -38,6 +46,13 @@
                         </form>
 
                         <form id="RegForm">
+                            {% if register_message %}
+                            <div class="message-container" style="text-align: start;">
+                                {% for message in register_message%}
+                                <li style="color: red; font-size: 10px;">{{message}}</li>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                             <input type="text" placeholder="Username">
                             <input type="email" placeholder="Email">
                             <input type="password" placeholder="Password">
@@ -69,6 +84,7 @@
         var LoginForm = document.getElementById("LoginForm");
         var RegForm = document.getElementById("RegForm");
         var Indicator = document.getElementById("Indicator");
+
         function register() {
             RegForm.style.transform = "translatex(0px)";
             LoginForm.style.transform = "translatex(0px)";

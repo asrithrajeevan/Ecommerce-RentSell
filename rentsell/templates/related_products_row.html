@@ -1,17 +1,20 @@
 {% load static %}
+{% load chunks %}
 
 <div class="small-container">
     <div class="row row-2">
         <h2>Related Products</h2>
-        <p>View More</p>
+        <a href="{% url 'products'%}"><p>View More</p></a>
     </div>
 </div>
 <!-- Products -->
 <div class="small-container">
+    {% for products in related_product|chunks:4 %}
     <div class="row">
+        {% for product in products %}
         <div class="col-4">
-            <img src="{% static 'images/product-9.jpg' %}">
-            <h4>Red Printed T-Shirt</h4>
+            <a href="{% url 'product_details' product.id %}"><img src="{{ product.image.url }}"></a>
+            <h4>{{product.title}}</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -19,9 +22,10 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p>$50.00</p>
+            <p>${{product.price}}</p>
         </div>
-        <div class="col-4">
+        {% endfor %}
+        <!-- <div class="col-4">
             <img src="{% static 'images/product-10.jpg' %}">
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
@@ -56,6 +60,7 @@
                 <i class="fa fa-star-o"></i>
             </div>
             <p>$50.00</p>
-        </div>
+        </div> -->
     </div>
+    {% endfor %}
 </div>
