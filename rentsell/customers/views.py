@@ -35,10 +35,10 @@ def user_account(request):
                     phone_number = number,
                     address = address
                 )
-                success_message = 'Registration successful'
+                success_message = 'Registration successful, Please login'
                 messages.success(request, success_message)
             except Exception as e:
-                error_message = 'Duplicate user name or invalid credentials'
+                error_message = 'Username already exist or invalid credentials'
                 print('error----->',e)
                 messages.error(request, error_message)
 

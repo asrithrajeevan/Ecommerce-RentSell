@@ -445,6 +445,7 @@ form .btn:focus{
 }
 #LoginForm{
     left: -300px;
+    padding-top: 30px;
 }
 #messageLogin{
     left: -300px;
