@@ -3,8 +3,12 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Customer
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
+def sign_out(request):
+    logout(request)
+    return redirect('user_account')
+
 @csrf_protect
 def user_account(request):
     # errors_login = ['give valid email in login', 'fill all the fields in login']
@@ -48,9 +52,9 @@ def user_account(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username, password=password) #checking the given username and password is existing or not
-            print('HEate---->',username, password)
+            print('user---->',user)
             if user:
-                login(request, user) # if the user is exists it gives the user to login
+                login(request, user) # if the user is exists it gives the user to acess home page
                 return redirect('index')
             else:
                 error_message = 'Invalid user credentials'
