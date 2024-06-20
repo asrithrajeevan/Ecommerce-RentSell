@@ -24,10 +24,16 @@
                         <li class="{% if request.path == '/' %}current{% endif %}"><a href="{% url 'index' %}">Home</a></li>
                         <li class="{% if request.path == '/products/' %}current{% endif %}"><a href="{% url 'products' %}">Products</a></li>
                         <li class="{% if request.path == '/home/about_us/' %}current{% endif %}"><a href="{% url 'about' %}">About</a></li>
-                        <li class="{% if request.path == '/customer/user_account/' %}current{% endif %}"><a href="{% url 'user_account' %}">Account</a></li>
+                        {% if not user.is_authenticated %}
+                            <li class="{% if request.path == '/customer/user_account/' %}current{% endif %}"><a href="{% url 'user_account' %}">Account</a></li>
+                        {% else%}
+                        <li style="background-color: rgb(56, 54, 53); padding-inline : 10px; border-radius: 10px;"><a href="{% url 'sign_out' %}" style="color: white; font-size:13px;">Logout</a></li>
+                        {% endif %}
                      </ul>
                 </nav>
+                {% if user.is_authenticated %}
                 <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+                {% endif %}
                 <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
             </div>
             {% block banner %}
