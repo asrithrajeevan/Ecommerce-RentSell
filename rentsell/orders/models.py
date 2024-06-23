@@ -33,4 +33,5 @@ class Order(models.Model):
 class OrderedItem(models.Model):
     product = models.ForeignKey(Products, related_name='added_cart', null=True, on_delete=models.SET_NULL) # for access product details
     quantity = models.IntegerField(default=1)
+    size = models.CharField(max_length=100,default='S',null=True)
     owner = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='added_items') # One order have multiple items
