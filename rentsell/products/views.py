@@ -17,7 +17,6 @@ def list_products(request):
     if request.GET:
         page = request.GET.get('page',1) # 1 is default value
         name = request.GET.get('name')
-        # print('name--->',request.GET)
     product_list = Products.objects.order_by('priority') # render the product basis of the priority
     product_paginator = Paginator(product_list, 8) # Paginator devide the entire product to 8 each pages
     # print('product_paginator--->',product_paginator)
@@ -36,7 +35,6 @@ def detail_product(request,pk):
     # for single_product in product:
     # print('product-->',product.price)
     # for item in related_product:
-    #     print('---------->',item.title)
     context = {
         'product' : product,
         'related_product' : related_product
