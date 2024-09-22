@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def sign_out(request):
     logout(request)
-    return redirect('user_account')
+    return redirect('user_account') 
 
 @csrf_protect
 def user_account(request):
@@ -43,7 +43,6 @@ def user_account(request):
                 messages.success(request, success_message)
             except Exception as e:
                 error_message = 'Username already exist or invalid credentials'
-                print('error----->',e)
                 messages.error(request, error_message)
 
 
@@ -52,7 +51,6 @@ def user_account(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username, password=password) #checking the given username and password is existing or not
-            print('user---->',user)
             if user:
                 login(request, user) # if the user is exists it gives the user to acess home page
                 return redirect('index')
